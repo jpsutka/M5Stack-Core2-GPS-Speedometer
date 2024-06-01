@@ -7,7 +7,7 @@
 
 static const uint32_t GPSBaud = 9600;
 
-// Create an instance of the TinyGPS++ object
+// Create an instance of the TinyGPSPlus object
 TinyGPSPlus gps;
 
 // Create a HardwareSerial object for the GPS module
@@ -40,6 +40,13 @@ void loop() {
     M5.Lcd.clear();
     M5.Lcd.setTextSize(4);
     M5.Lcd.setCursor(0, 0);
+
+    // Set color based on speed
+    if ((int)gps.speed.kmph() < 50) M5.Lcd.setTextColor(GREEN);
+    if ((int)gps.speed.kmph() >= 50 && (int)gps.speed.kmph() < 80) M5.Lcd.setTextColor(YELLOW);
+    if ((int)gps.speed.kmph() >= 80 && (int)gps.speed.kmph() < 110) M5.Lcd.setTextColor(ORANGE);
+    if ((int)gps.speed.kmph() >= 110) M5.Lcd.setTextColor(RED);
+
     M5.Lcd.println((int)gps.speed.kmph());
     M5.Lcd.print(" KMPH");
 
