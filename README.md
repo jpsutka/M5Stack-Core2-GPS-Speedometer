@@ -1,4 +1,4 @@
-# GPS Integration with Microcontroller
+# GPS Integration with M5Stack
 
 This project demonstrates how to integrate the Beitian BN-220 GPS module with a M5Stack. The image below shows the connection setup.
 
